@@ -67,6 +67,7 @@ kernel2 = np.array([[-1, 0, 1],
                     [-1, 0, 1]])
 
 # flipping the kernel for convolution
+# After flipping the center is at bottom right
 kernel2 = np.flip(kernel2)
 
 kh2, kw2 = kernel2.shape
