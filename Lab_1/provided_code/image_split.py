@@ -53,8 +53,7 @@ h, s, v = cv2.split(img_hsv)
 
 # Show each HSV channel as grayscale image
 cv2.imshow('Value Channel', v)
-#cv2.imshow('Saturation Channel', s)
-#cv2.imshow('Value Channel', v)
+cv2.imshow('Saturation Channel', s)
 
 # Merge channels back
 merged_hsv = cv2.merge([h, s, v])
