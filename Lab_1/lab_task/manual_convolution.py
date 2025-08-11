@@ -87,6 +87,8 @@ for i in range(2, h+2):
                 result += kernel2[m, n] * box_bordered_2[i+m-2,j+n-2]
         box_conv_2[i , j] = result
 
+print("Convolution with Kernel 2 completed.", box_conv_2)
+
 # Normalize and display results for kernel2
 box_norm_2 = np.round(cv2.normalize(box_conv_2, None, 0, 255, cv2.NORM_MINMAX)).astype(np.uint8)
 box_norm_cropped_2 = box_norm_2[2:h+2, 2:w+2]
