@@ -57,6 +57,7 @@ cv2.imshow('Saturation Channel', s)
 
 # Merge channels back
 merged_hsv = cv2.merge([h, s, v])
+cv2.imshow('Merged HSV', merged_hsv)
 
 # Convert merged HSV back to BGR for display
 img_merged_bgr = cv2.cvtColor(merged_hsv, cv2.COLOR_HSV2BGR)
