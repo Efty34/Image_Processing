@@ -52,6 +52,7 @@ img_hsv = cv2.cvtColor(img_color, cv2.COLOR_BGR2HSV)
 h, s, v = cv2.split(img_hsv)
 
 # Show each HSV channel as grayscale image
+cv2.imshow('Hue Channel', h)
 cv2.imshow('Value Channel', v)
 cv2.imshow('Saturation Channel', s)
 

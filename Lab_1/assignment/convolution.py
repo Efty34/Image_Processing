@@ -1,35 +1,33 @@
 import numpy as np
 import cv2
 
-def apply_convolution(image: np.ndarray, kernel: np.ndarray):
-
+def apply_convolution(image, kernel):
     h, w = image.shape
+    k = np.flip(kernel)
+    kh, kw = k.shape
     
-    kernel_flip = np.flip(kernel)
-
-    kh, kw = kernel_flip.shape
-
-    padding = (kh - 1) // 2
-
-    border_image = cv2.copyMakeBorder(image, padding, padding, padding, padding, cv2.BORDER_CONSTANT)
-
-    convo_op = np.zeros_like(border_image, dtype=np.float32)
-
-    for i in range(padding, h + padding):
-        for j in range(padding, w + padding):
-            result = 0
-            for m in range(kh):
-                for n in range(kw):
-                    result += border_image[i + m - padding, j + n - padding] * kernel_flip[m, n]
-            convo_op[i, j] = result
+    if kh % 2 == 0 or kw % 2 == 0:
+        raise ValueError("Kernel dimensions must be odd.")
     
-    norm = np.round(cv2.normalize(convo_op, None, 0, 255, cv2.NORM_MINMAX)).astype(np.uint8)
-    norm_cropped = norm[padding:h + padding, padding:w + padding]
-
+    pad = (kh - 1) // 2
+    img = cv2.copyMakeBorder(image, pad, pad, pad, pad, cv2.BORDER_CONSTANT, value=0)
+    result = np.zeros_like(img, dtype=np.float32)
+    
+    for i in range(pad, h + pad):
+        for j in range(pad, w + pad):
+            y = i - pad
+            x = j - pad
+            roi = img[y:y+kh, x:x+kw]
+            val = np.sum(roi * k)
+            result[i, j] = val
+    
+    norm = np.round(cv2.normalize(result, None, 0, 255, cv2.NORM_MINMAX)).astype(np.uint8)
+    final = norm[pad:h+pad, pad:w+pad]
+    
     return {
-        "padding": padding,
-        "border_image": border_image,
-        "convo_op": convo_op,
-        "norm": norm,
-        "norm_cropped": norm_cropped
+        "padding": pad,
+        "border_img": img,
+        "raw_result": result,
+        "normalized": norm,
+        "final": final
     }

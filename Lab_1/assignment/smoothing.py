@@ -11,4 +11,6 @@ def gaussian_smoothing_kernel(size, sigma) -> np.ndarray:
 
     kernel = (1 / (2 * np.pi * sigma**2)) * np.exp(-(x**2 + y**2) / (sigma**2))
 
+    kernel /= np.sum(kernel)
+
     return kernel 
