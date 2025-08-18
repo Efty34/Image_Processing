@@ -13,6 +13,6 @@ def sharpening_kernel(size, sigma) -> np.ndarray:
     
     kernel = ((x2y2 - (2 * sigma**2)) / sigma**4) * (np.exp(-x2y2 / (2 * sigma**2)))
 
-    kernel = kernel / np.sum(kernel) 
+    # kernel = kernel / np.sum(kernel) 
     
     return kernel
