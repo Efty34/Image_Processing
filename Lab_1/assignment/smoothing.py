@@ -9,8 +9,8 @@ def gaussian_smoothing_kernel(size, sigma) -> np.ndarray:
 
     x, y = np.meshgrid(np.arange(size) - center, np.arange(size) - center)
 
-    kernel = (1 / (2 * np.pi * sigma**2)) * np.exp(-(x**2 + y**2) / (sigma**2))
+    kernel = (1 / (2 * np.pi * sigma**2)) * np.exp(-(x**2 + y**2) / (2 * sigma**2))
 
     kernel /= np.sum(kernel)
 
-    return kernel 
+    return kernel
