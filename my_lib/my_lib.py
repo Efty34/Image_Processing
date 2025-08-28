@@ -109,6 +109,47 @@ def int_kernel(kernel, min_val, max_val):
     int_kernel = np.round(int_kernel).astype(int)
     return int_kernel
 
+def double_threshold(image, low_thresh, high_thresh, mid_val):
+    output = np.zeros_like(image, dtype=np.uint8)
+    output[image>=high_thresh]=255
+    output[image<low_thresh]=0
+    mask =(image >=low_thresh)&(image<high_thresh)
+    output[mask] = mid_val
+
+    return output
+
+def hysteresis_thresholding(image, low_thresh, high_thresh, strong_val, weak_val):
+
+    strong_pixel_val = strong_val
+    weak_pixel_val = weak_val
+
+    output = np.zeros_like(image, dtype=np.uint8)
+
+    strong_pixels = image >= high_thresh
+    weak_pixels = (image <= high_thresh) & (image >= low_thresh)
+
+    output[strong_pixels] = strong_pixel_val
+    output[weak_pixels] = weak_pixel_val
+
+    pad_output = np.pad(output, pad_width=1, mode='constant', constant_values=0)
+
+    rows, cols = image.shape
+    for _ in range(5): 
+        for r in range(rows):
+            for c in range(cols):
+                pr,pc=r+1,c+1
+                if pad_output[pr, pc] == weak_pixel_val:
+                    neighborhood = pad_output[pr-1:pr+2, pc-1:pc+2]
+                    if np.max(neighborhood) == strong_pixel_val:
+                        pad_output[pr, pc] = strong_pixel_val
+
+    output = pad_output[1:-1, 1:-1]
+
+    output[output == weak_pixel_val] = 0
+
+    return output
+    
+
 def show_image(image, title='Image'):
     cv2.imshow(title, image)
     cv2.waitKey(0)
