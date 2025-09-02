@@ -126,7 +126,7 @@ def hysteresis_thresholding(image, low_thresh, high_thresh, strong_val, weak_val
     output = np.zeros_like(image, dtype=np.uint8)
 
     strong_pixels = image >= high_thresh
-    weak_pixels = (image <= high_thresh) & (image >= low_thresh)
+    weak_pixels = (image < high_thresh) & (image >= low_thresh)
 
     output[strong_pixels] = strong_pixel_val
     output[weak_pixels] = weak_pixel_val
