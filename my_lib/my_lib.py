@@ -148,6 +148,13 @@ def hysteresis_thresholding(image, low_thresh, high_thresh, strong_val, weak_val
     output[output == weak_pixel_val] = 0
 
     return output
+
+def colorize_edges(edge_img, strong_val, weak_val):
+
+    color_img = np.zeros((*edge_img.shape, 3), dtype=np.uint8)
+    color_img[edge_img == strong_val] = [0, 255, 0]
+    color_img[edge_img == weak_val] = [255, 0, 0]
+    return color_img
     
 
 def show_image(image, title='Image'):
