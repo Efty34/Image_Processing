@@ -155,6 +155,43 @@ def colorize_edges(edge_img, strong_val, weak_val):
     color_img[edge_img == strong_val] = [0, 255, 0]
     color_img[edge_img == weak_val] = [255, 0, 0]
     return color_img
+
+def histogram_equalization(image):
+    M,N=image.shape
+    total_pixels = M*N
+    L=256
+    histogram = np.zeros(L, dtype=np.int32)
+    for i in range(M):
+        for j in range(N):
+            pixel_intensity=image[i,j]
+            histogram[pixel_intensity] += 1
+    # histogram=cv2.calcHist([image], [0], None, [256], [0,256]).flatten()
+
+    probability=np.zeros(L, dtype=np.float32)
+    for i in range(L):
+        probability[i] = histogram[i]/total_pixels
+    
+    cumulative_sum_array=np.zeros(L, dtype=np.float32)
+    transformation_fn=np.zeros(L, dtype=np.int32)
+    for i in range(L):
+        cumulative_sum=0.0
+        for j in range(i+1):
+            cumulative_sum += probability[j]
+        cumulative_sum_array[i] = cumulative_sum
+        transformation_fn[i] = round((L-1)*cumulative_sum)
+        if transformation_fn[i]>255:
+            transformation_fn[i]=255
+
+    equalized_image=np.zeros_like(image)
+    for i in range(M):
+        for j in range(N):
+            old_value=image[i,j]
+            new_value=transformation_fn[old_value]
+            equalized_image[i,j]=new_value
+    # equalized_image = cv2.LUT(image, transformation_fn.astype(np.uint8))
+
+    return histogram, probability, cumulative_sum_array, transformation_fn, equalized_image
+
     
 
 def show_image(image, title='Image'):

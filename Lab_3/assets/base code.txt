@@ -1,0 +1,13 @@
+Using openCV: 
+
+cv2.calcHist(images, channels, mask, histSize, ranges[, 	hist[, accumulate]])
+
+hist_HE1 = cv2.calcHist([HE1],[0],None,[256],[0,256])
+
+Show output Using Matplotlib:
+
+	plt.figure(figsize=(12,16))
+	plt.subplot(3,2,1)
+	plt.imshow(img, cmap='gray’)
+	plt.title("Original Image")
+	plt.axis("off")
