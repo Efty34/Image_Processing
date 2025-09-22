@@ -6,15 +6,14 @@ import matplotlib.pyplot as plt
 from math import sqrt, pi
 
 # %%
-
 def img_area(bin_img):
     area=np.count_nonzero(bin_img)
     return area
-
+# %%
 def img_perimeter(border_img):
     perimeter=np.count_nonzero(border_img)
     return perimeter
-
+# %%
 def find_max_d(bin_img):
     min_x=min_y=1000000
     max_x=max_y=0
@@ -30,16 +29,17 @@ def find_max_d(bin_img):
     
     return (max_x-min_x,max_y-min_y)
 
+# %%
 def calc_descriptors(binary_img,i):
 
     se=np.ones((3,3),np.uint8)
     eroded=cv2.erode(binary_img,se,iterations=1)
     border_img=binary_img-eroded
 
-    #cv2.imshow(f'border_{i}',border_img)
-    #cv2.imshow(f'binary_{i}',binary_img)
-    #cv2.waitKey(0)
-    #cv2.destroyAllWindows()
+    # cv2.imshow(f'border_{i}',border_img)
+    # cv2.imshow(f'binary_{i}',binary_img)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
     
     area=img_area(binary_img)
     perimeter=img_perimeter(border_img)
@@ -53,7 +53,7 @@ def calc_descriptors(binary_img,i):
 
     return form_factor,roundness,compactness
 
-
+# %%
 def euc_distt(t1, t2):
     abs_f=(t1[0]-t2[0])**2
     abs_r=(t1[1]-t2[1])**2
@@ -61,7 +61,7 @@ def euc_distt(t1, t2):
     
     return sqrt(abs_f+abs_r+abs_c)
 
-
+# %%
 def sim_matrix(train_images,test_images):
     train_descriptors=[]
     test_descriptors=[]
@@ -101,15 +101,16 @@ def sim_matrix(train_images,test_images):
     
     return sim_matrix
 
+# %%
 train_images=[
-    cv2.imread('c1.jpg',0),
-    cv2.imread('t1.jpg',0),
-    cv2.imread('p1.png',0)
+    cv2.imread('../assets/c1.jpg',0),
+    cv2.imread('../assets/t1.jpg',0),
+    cv2.imread('../assets/p1.png',0)
 ]
 test_images=[
-    cv2.imread('c2.jpg',0),
-    cv2.imread('t2.jpg',0),
-    cv2.imread('p2.png',0),
-    cv2.imread('st.jpg',0),
+    cv2.imread('../assets/c2.jpg',0),
+    cv2.imread('../assets/t2.jpg',0),
+    cv2.imread('../assets/p2.png',0),
+    cv2.imread('../assets/st.jpg',0),
 ]
 result=sim_matrix(train_images,test_images)
