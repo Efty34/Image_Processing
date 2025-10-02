@@ -1,5 +1,4 @@
 # %%
-
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -62,7 +61,80 @@ def euc_distt(t1, t2):
     return sqrt(abs_f+abs_r+abs_c)
 
 # %%
-def sim_matrix(train_images,test_images):
+# def sim_matrix(train_images,test_images):
+#     train_descriptors=[]
+#     test_descriptors=[]
+
+#     for i,img in enumerate(train_images):
+#         ff,rs,cs=calc_descriptors(img,i)
+#         train_descriptors.append((ff,rs,cs))
+    
+#     for i, img in enumerate(test_images):
+#         ff,rs,cs=calc_descriptors(img,i)
+#         test_descriptors.append((ff,rs,cs))
+    
+#     sim_mat=[]
+#     for i,test_d in enumerate(test_descriptors):
+#         sim_row=[]
+#         for j,train_d in enumerate(train_descriptors):
+#             euc_dist=euc_distt(test_d,train_d)
+#             sim_row.append(euc_dist)
+#         sim_mat.append(sim_row)
+    
+#     print("train",train_descriptors)
+#     print("test",test_descriptors)
+#     print("sim",sim_mat)
+    
+#     print("Similarity Matrix\n")
+#     print("\t",end="")
+#     for j in range(len(train_images)):
+#         print(f"GT{j + 1}",end="\t")
+#     print()
+
+#     for i in range(len(test_images)):
+#         print(f"Test {i + 1}\t",end="")
+#         for j in range(len(train_images)):
+#             similarity_val=sim_mat[i][j]
+#             print(f"{similarity_val:.5f}",end="\t")
+#         print()
+    
+#         # Create figure with subplots
+#     plt.figure(figsize=(15, 10))
+    
+#     # Create grid layout
+#     rows = len(test_images) + 1  # +1 for header row
+#     cols = len(train_images) + 1  # +1 for test images column
+    
+#     # Top row: Train images
+#     for j, train_img in enumerate(train_images):
+#         plt.subplot(rows, cols, j + 2)  # Skip first cell
+#         plt.imshow(train_img, cmap='gray')
+#         plt.title(f'GT{j+1}')
+#         plt.axis('off')
+    
+#     # Left column: Test images and similarity values
+#     for i in range(len(test_images)):
+#         # Test image in rightmost column
+#         plt.subplot(rows, cols, (i + 1) * cols + 1)
+#         plt.imshow(test_images[i], cmap='gray')
+#         plt.title(f'Test {i+1}')
+#         plt.axis('off')
+        
+#         # Similarity values
+#         for j in range(len(train_images)):
+#             plt.subplot(rows, cols, (i + 1) * cols + j + 2)
+#             similarity_val = sim_matrix[i][j]
+#             plt.text(0.5, 0.5, f'{similarity_val:.5f}')
+#             plt.axis('off')
+            
+    
+#     plt.suptitle('Similarity Matrix')
+#     plt.tight_layout()
+#     plt.show()
+    
+#     return sim_matrix
+# %%
+def sim_matrix(train_images, test_images):
     train_descriptors=[]
     test_descriptors=[]
 
@@ -95,11 +167,42 @@ def sim_matrix(train_images,test_images):
     for i in range(len(test_images)):
         print(f"Test {i + 1}\t",end="")
         for j in range(len(train_images)):
-            similarity_val=sim_mat[i][j]
+            similarity_val=sim_mat[i][j]   
             print(f"{similarity_val:.5f}",end="\t")
         print()
     
-    return sim_matrix
+    # Create figure with subplots
+    plt.figure(figsize=(15, 10))
+    
+    rows = len(test_images) + 1
+    cols = len(train_images) + 1
+    
+    # Top row: Train images
+    for j, train_img in enumerate(train_images):
+        plt.subplot(rows, cols, j + 2)
+        plt.imshow(train_img, cmap='gray')
+        plt.title(f'GT{j+1}')
+        plt.axis('off')
+    
+    # Left column: Test images and similarity values
+    for i in range(len(test_images)):
+        plt.subplot(rows, cols, (i + 1) * cols + 1)
+        plt.imshow(test_images[i], cmap='gray')
+        plt.title(f'Test {i+1}')
+        plt.axis('off')
+        
+        for j in range(len(train_images)):
+            plt.subplot(rows, cols, (i + 1) * cols + j + 2)
+            similarity_val = sim_mat[i][j]  
+            plt.text(0.5, 0.5, f'{similarity_val:.5f}', ha='center', va='center')
+            plt.axis('off')
+            
+    plt.suptitle('Similarity Matrix')
+    plt.tight_layout()
+    plt.show()
+    
+    return sim_mat   
+
 
 # %%
 train_images=[
@@ -114,3 +217,5 @@ test_images=[
     cv2.imread('../assets/st.jpg',0),
 ]
 result=sim_matrix(train_images,test_images)
+
+# %%
