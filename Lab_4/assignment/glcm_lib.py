@@ -98,7 +98,7 @@ def contrast(glcm):
     total=0.0
     for y in range(h):
         for x in range(w):
-            total=((y-x)**2)*glcm_n[y,x]
+            total+=((y-x)**2)*glcm_n[y,x]
     return total
 
 def homogenity(glcm):
@@ -107,5 +107,5 @@ def homogenity(glcm):
     total=0.0
     for y in range(h):
         for x in range(w):
-            total=(glcm_n[y,x])/(1+np.abs(y-x))
+            total+=(glcm_n[y,x])/(1+abs(y-x))
     return total
