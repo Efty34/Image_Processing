@@ -1,2 +1,3 @@
 imgenv
-project
+.vscode
+__pycache__
