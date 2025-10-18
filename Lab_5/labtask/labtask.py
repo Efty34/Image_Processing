@@ -24,7 +24,7 @@ def notch_filter(img,notch_centers,radius,filter_type="reject"):
 
 
 def apply(r):
-    duck=cv2.imread("pnois2.jpg",0)
+    duck=cv2.imread("/assets/pnois2.jpg",0)
     ft = np.fft.fft2(duck)
     ft_shift=np.fft.fftshift(ft)
     
