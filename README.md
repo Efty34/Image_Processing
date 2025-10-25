@@ -41,16 +41,15 @@ Image_Processing/
 
 ## Laboratory Modules
 
-### Lab 1: Image Convolution and Filtering
-
 **Topics Covered:**
 
-- 2D Convolution operations
-- Gaussian smoothing filters
-- Laplacian of Gaussian (LoG) sharpening filters
-- Manual kernel implementation
-- Image padding and border handling
-- Color space processing (RGB and HSV)
+| Week | Topics Covered |
+|------|----------------|
+| Week 1 | Convolution operations |
+| Week 2 | Segmentation applying  edge detection and thresholding |
+| Week 3 | Histogram equalization and matching |
+| Week 4 | Frequency Domain Filtering |
+| Week 5 | Region Descriptors |
 
 **Key Files:**
 
@@ -184,8 +183,8 @@ Additional practice materials and implementations:
 
 **Key Files:**
 
-- [`project/LumenTrace.ipynb`](project/LumenTrace.ipynb) - Complete project implementation
-- [`project/Project Proposal/2007052_LumenTrace.pdf`](project/Project Proposal/2007052_LumenTrace.pdf) - Project proposal and methodology
+- [`project/LumenTrace.ipynb`](https://github.com/Efty34/LumenTrace) - Complete project implementation
+- [`project/ProjectProposal/2007052_LumenTrace.pdf`](project/ProjectProposal/2007052_LumenTrace.pdf) - Project proposal and methodology
 
 **Key Functions:**
 
@@ -265,10 +264,9 @@ Each laboratory module can be run independently:
 ## Related Repositories
 
 - [Image-Processing-Lab by Turzo](https://github.com/vallagenakisu/Image-Processing-Lab) - Turzo is from IG1
--  [IPCV_Labs by Faysal](https://github.com/Faysal-star/IPCV_Labs) - Faysal is from IG2
--  [ImageCodes](https://github.com/abusaeed2433/ImageCodes) - Abu Saeed bhai is from 19
--  [LumenTrace](https://github.com/Efty34/LumenTrace) - My Project of this lab.
-
+- [IPCV_Labs by Faysal](https://github.com/Faysal-star/IPCV_Labs) - Faysal is from IG2
+- [ImageCodes](https://github.com/abusaeed2433/ImageCodes) - Abu Saeed bhai is from 19
+- [LumenTrace](https://github.com/Efty34/LumenTrace) - My Project of this lab.
 
 ## License
 
