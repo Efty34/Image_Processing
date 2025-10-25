@@ -4,18 +4,25 @@ This repository contains a comprehensive collection of image processing laborato
 
 ## Table of Contents
 
-- [Repository Structure](#repository-structure)
-- [Laboratory Modules](#laboratory-modules)
-  - [Lab 1: Image Convolution and Filtering](#lab-1-image-convolution-and-filtering)
-  - [Lab 2: Edge Detection](#lab-2-edge-detection)
-  - [Lab 3: Histogram Processing](#lab-3-histogram-processing)
-  - [Lab 4: Texture Analysis](#lab-4-texture-analysis)
-  - [Lab 5: Frequency Domain Processing](#lab-5-frequency-domain-processing)
-- [Additional Components](#additional-components)
-- [Project: LumenTrace](#project-lumentrace)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Dependencies](#dependencies)
+- [Image Processing Laboratory Collection](#image-processing-laboratory-collection)
+  - [Table of Contents](#table-of-contents)
+  - [Repository Structure](#repository-structure)
+  - [Laboratory Modules](#laboratory-modules)
+    - [Lab 1: Image Convolution and Filtering](#lab-1-image-convolution-and-filtering)
+    - [Lab 2: Edge Detection](#lab-2-edge-detection)
+    - [Lab 3: Histogram Processing](#lab-3-histogram-processing)
+    - [Lab 4: Texture Analysis](#lab-4-texture-analysis)
+    - [Lab 5: Frequency Domain Processing](#lab-5-frequency-domain-processing)
+  - [Additional Components](#additional-components)
+    - [my\_lib/](#my_lib)
+    - [practices/](#practices)
+  - [Project: LumenTrace](#project-lumentrace)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Dependencies](#dependencies)
+  - [Related Repositories](#related-repositories)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
 
 ## Repository Structure
 
@@ -37,6 +44,7 @@ Image_Processing/
 ### Lab 1: Image Convolution and Filtering
 
 **Topics Covered:**
+
 - 2D Convolution operations
 - Gaussian smoothing filters
 - Laplacian of Gaussian (LoG) sharpening filters
@@ -45,12 +53,14 @@ Image_Processing/
 - Color space processing (RGB and HSV)
 
 **Key Files:**
+
 - [`Lab_1/lab_task/manual_convolution.py`](Lab_1/lab_task/manual_convolution.py) - Manual implementation of 2D convolution
 - [`Lab_1/assignment/1.ipynb`](Lab_1/assignment/1.ipynb) - Applying smoothing and sharpening filters to grayscale images
 - [`Lab_1/assignment/2.ipynb`](Lab_1/assignment/2.ipynb) - Convolution on RGB and HSV color channels
 - [`my_lib/my_lib.py`](my_lib/my_lib.py) - Core convolution functions and kernel generators
 
 **Key Functions:**
+
 - `convolution2D()` - 2D convolution with padding
 - `gaussian_kernel()` - Gaussian smoothing kernel generator
 - `log_kernel()` - Laplacian of Gaussian sharpening kernel generator
@@ -58,6 +68,7 @@ Image_Processing/
 ### Lab 2: Edge Detection
 
 **Topics Covered:**
+
 - Gradient computation using Gaussian derivatives
 - Edge magnitude calculation
 - Double thresholding
@@ -66,11 +77,13 @@ Image_Processing/
 - Edge visualization and post-processing
 
 **Key Files:**
+
 - [`Lab_2/lab_task/double_thresholding.ipynb`](Lab_2/lab_task/double_thresholding.ipynb) - Edge detection with thresholding
 - [`Lab_2/assignment/1.ipynb`](Lab_2/assignment/1.ipynb) - Complete edge detection pipeline
 - [`Lab_2/assignment/2.ipynb`](Lab_2/assignment/2.ipynb) - OpenCV Canny edge detection
 
 **Key Functions:**
+
 - `double_threshold()` - Double thresholding for edge detection
 - `hysteresis_thresholding()` - Hysteresis edge linking
 - `colorize_edges()` - Edge visualization
@@ -78,6 +91,7 @@ Image_Processing/
 ### Lab 3: Histogram Processing
 
 **Topics Covered:**
+
 - Histogram calculation and visualization
 - Probability density functions (PDF)
 - Cumulative distribution functions (CDF)
@@ -86,11 +100,13 @@ Image_Processing/
 - Color image histogram processing in BGR and HSV spaces
 
 **Key Files:**
+
 - [`Lab_3/lab_task/lab_task.ipynb`](Lab_3/lab_task/lab_task.ipynb) - Histogram equalization implementation
 - [`Lab_3/assignment/1.ipynb`](Lab_3/assignment/1.ipynb) - Color image histogram processing
 - [`Lab_3/assignment/2.ipynb`](Lab_3/assignment/2.ipynb) - Histogram specification with Erlang distribution
 
 **Key Functions:**
+
 - `histogram_equalization()` - Complete histogram equalization pipeline
 - `histogram_specification()` - Custom histogram matching
 - `erlang_pdf()` - Erlang distribution for specific histograms
@@ -98,6 +114,7 @@ Image_Processing/
 ### Lab 4: Texture Analysis
 
 **Topics Covered:**
+
 - Gray-Level Co-occurrence Matrix (GLCM) computation
 - Texture feature extraction (energy, entropy, contrast, homogeneity)
 - Region descriptors for shape analysis
@@ -105,12 +122,14 @@ Image_Processing/
 - Image similarity metrics
 
 **Key Files:**
+
 - [`Lab_4/assignment/glcm_lib.py`](Lab_4/assignment/glcm_lib.py) - GLCM implementation library
 - [`Lab_4/assignment/assignment_1.ipynb`](Lab_4/assignment/assignment_1.ipynb) - GLCM analysis of different textures
 - [`Lab_4/assignment/assignment_2.ipynb`](Lab_4/assignment/assignment_2.ipynb) - Patch-based texture analysis
 - [`Lab_4/lab_task/lab4.py`](Lab_4/lab_task/lab4.py) - Shape descriptors and similarity metrics
 
 **Key Functions:**
+
 - `manual_horizontal_glcm_fn()` - Horizontal GLCM computation
 - `manual_vertical_glcm_fn()` - Vertical GLCM computation
 - `manual_diagonal_glcm_fn()` - Diagonal GLCM computation
@@ -119,6 +138,7 @@ Image_Processing/
 ### Lab 5: Frequency Domain Processing
 
 **Topics Covered:**
+
 - Fourier Transform and spectrum analysis
 - Frequency domain filtering
 - Notch filtering for periodic noise removal
@@ -126,20 +146,26 @@ Image_Processing/
 - Image reconstruction from filtered frequency components
 
 **Key Files:**
+
 - [`Lab_5/labtask/labtask.py`](Lab_5/labtask/labtask.py) - Notch filter implementation
 - [`Lab_5/assets/fourier_base.py`](Lab_5/assets/fourier_base.py) - Basic Fourier transform operations
 
 **Key Functions:**
+
 - `notch_filter()` - Creates notch filters for periodic noise removal
 
 ## Additional Components
 
 ### my_lib/
+
 Custom image processing library containing core functions used across all laboratories:
+
 - [`my_lib/my_lib.py`](my_lib/my_lib.py) - Core image processing functions
 
 ### practices/
+
 Additional practice materials and implementations:
+
 - [`practices/image_lib.py`](practices/image_lib.py) - Additional image processing utilities
 - Various Jupyter notebooks for edge detection, histogram equalization, and frequency domain processing
 
@@ -148,6 +174,7 @@ Additional practice materials and implementations:
 **LumenTrace** is a comprehensive project for determining the time a historical photograph was taken by analyzing shadow geometry. The project implements a complete image processing pipeline to restore photographs, isolate shadows, and perform geometric analysis to calculate sun position.
 
 **Project Features:**
+
 - Shadow detection using color space analysis (HSV and LAB)
 - Object segmentation using K-means clustering
 - Shadow-object pairing based on proximity
@@ -156,10 +183,12 @@ Additional practice materials and implementations:
 - 3D visualization of the sun-object-shadow relationship
 
 **Key Files:**
+
 - [`project/LumenTrace.ipynb`](project/LumenTrace.ipynb) - Complete project implementation
 - [`project/Project Proposal/2007052_LumenTrace.pdf`](project/Project Proposal/2007052_LumenTrace.pdf) - Project proposal and methodology
 
 **Key Functions:**
+
 - `detect_shadows()` - Multi-method shadow detection
 - `kmeans_object_segmentation()` - Object-background separation
 - `calculate_sun_elevation()` - Sun angle calculation
@@ -168,12 +197,14 @@ Additional practice materials and implementations:
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd Image_Processing
 ```
 
 2. Install required dependencies:
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -183,30 +214,35 @@ pip install -r requirements.txt
 Each laboratory module can be run independently:
 
 1. **For Lab 1 (Convolution and Filtering):**
+
    ```bash
    cd Lab_1/assignment
    jupyter notebook 1.ipynb
    ```
 
 2. **For Lab 2 (Edge Detection):**
+
    ```bash
    cd Lab_2/assignment
    jupyter notebook 1.ipynb
    ```
 
 3. **For Lab 3 (Histogram Processing):**
+
    ```bash
    cd Lab_3/assignment
    jupyter notebook 1.ipynb
    ```
 
 4. **For Lab 4 (Texture Analysis):**
+
    ```bash
    cd Lab_4/assignment
    jupyter notebook assignment_1.ipynb
    ```
 
 5. **For Lab 5 (Frequency Domain):**
+
    ```bash
    cd Lab_5/labtask
    python labtask.py
@@ -225,8 +261,14 @@ Each laboratory module can be run independently:
 - NumPy
 - Matplotlib
 - Jupyter Notebook
-- Pysolar (for LumenTrace project)
-- PyTZ (for LumenTrace project)
+
+## Related Repositories
+
+- [Image-Processing-Lab by Turzo](https://github.com/vallagenakisu/Image-Processing-Lab) - Turzo is from IG1
+-  [IPCV_Labs by Faysal](https://github.com/Faysal-star/IPCV_Labs) - Faysal is from IG2
+-  [ImageCodes](https://github.com/abusaeed2433/ImageCodes) - Abu Saeed bhai is from 19
+-  [LumenTrace](https://github.com/Efty34/LumenTrace) - My Project of this lab.
+
 
 ## License
 
