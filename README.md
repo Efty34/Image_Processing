@@ -9,12 +9,13 @@ This repository contains a comprehensive collection of image processing laborato
   - [Repository Structure](#repository-structure)
   - [Laboratory Modules](#laboratory-modules)
     - [Lab 1: Image Convolution and Filtering](#lab-1-image-convolution-and-filtering)
+    - [Lab 1: Image Convolution and Filtering](#lab-1-image-convolution-and-filtering-1)
     - [Lab 2: Edge Detection](#lab-2-edge-detection)
     - [Lab 3: Histogram Processing](#lab-3-histogram-processing)
     - [Lab 4: Texture Analysis](#lab-4-texture-analysis)
     - [Lab 5: Frequency Domain Processing](#lab-5-frequency-domain-processing)
   - [Additional Components](#additional-components)
-    - [my\_lib/](#my_lib)
+    - [my_lib/](#my_lib)
     - [practices/](#practices)
   - [Project: LumenTrace](#project-lumentrace)
   - [Installation](#installation)
@@ -41,15 +42,26 @@ Image_Processing/
 
 ## Laboratory Modules
 
+### Lab 1: Image Convolution and Filtering
+
+| Week   | Topics Covered                                        |
+| ------ | ----------------------------------------------------- |
+| Week 1 | Convolution operations                                |
+| Week 2 | Segmentation applying edge detection and thresholding |
+| Week 3 | Histogram equalization and matching                   |
+| Week 4 | Frequency Domain Filtering                            |
+| Week 5 | Region Descriptors                                    |
+
+### Lab 1: Image Convolution and Filtering
+
 **Topics Covered:**
 
-| Week | Topics Covered |
-|------|----------------|
-| Week 1 | Convolution operations |
-| Week 2 | Segmentation applying  edge detection and thresholding |
-| Week 3 | Histogram equalization and matching |
-| Week 4 | Frequency Domain Filtering |
-| Week 5 | Region Descriptors |
+- 2D Convolution operations
+- Gaussian smoothing filters
+- Laplacian of Gaussian (LoG) sharpening filters
+- Manual kernel implementation
+- Image padding and border handling
+- Color space processing (RGB and HSV)
 
 **Key Files:**
 
