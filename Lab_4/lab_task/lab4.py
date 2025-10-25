@@ -172,34 +172,34 @@ def sim_matrix(train_images, test_images):
         print()
     
     # Create figure with subplots
-    plt.figure(figsize=(15, 10))
+    # plt.figure(figsize=(15, 10))
     
-    rows = len(test_images) + 1
-    cols = len(train_images) + 1
+    # rows = len(test_images) + 1
+    # cols = len(train_images) + 1
     
-    # Top row: Train images
-    for j, train_img in enumerate(train_images):
-        plt.subplot(rows, cols, j + 2)
-        plt.imshow(train_img, cmap='gray')
-        plt.title(f'GT{j+1}')
-        plt.axis('off')
+    # # Top row: Train images
+    # for j, train_img in enumerate(train_images):
+    #     plt.subplot(rows, cols, j + 2)
+    #     plt.imshow(train_img, cmap='gray')
+    #     plt.title(f'GT{j+1}')
+    #     plt.axis('off')
     
-    # Left column: Test images and similarity values
-    for i in range(len(test_images)):
-        plt.subplot(rows, cols, (i + 1) * cols + 1)
-        plt.imshow(test_images[i], cmap='gray')
-        plt.title(f'Test {i+1}')
-        plt.axis('off')
+    # # Left column: Test images and similarity values
+    # for i in range(len(test_images)):
+    #     plt.subplot(rows, cols, (i + 1) * cols + 1)
+    #     plt.imshow(test_images[i], cmap='gray')
+    #     plt.title(f'Test {i+1}')
+    #     plt.axis('off')
         
-        for j in range(len(train_images)):
-            plt.subplot(rows, cols, (i + 1) * cols + j + 2)
-            similarity_val = sim_mat[i][j]  
-            plt.text(0.5, 0.5, f'{similarity_val:.5f}', ha='center', va='center')
-            plt.axis('off')
+    #     for j in range(len(train_images)):
+    #         plt.subplot(rows, cols, (i + 1) * cols + j + 2)
+    #         similarity_val = sim_mat[i][j]  
+    #         plt.text(0.5, 0.5, f'{similarity_val:.5f}', ha='center', va='center')
+    #         plt.axis('off')
             
-    plt.suptitle('Similarity Matrix')
-    plt.tight_layout()
-    plt.show()
+    # plt.suptitle('Similarity Matrix')
+    # plt.tight_layout()
+    # plt.show()
     
     return sim_mat   
 
